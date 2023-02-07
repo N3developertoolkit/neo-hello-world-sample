@@ -14,29 +14,25 @@ namespace DevHawk.SampleContracts
     [ManifestExtra("Description", "This is an example contract")]
     public class HelloWorldContract : SmartContract
     {
-        const byte Prefix_SampleValue = 0x00;
-        const byte Prefix_ContractOwner = 0xFF;
+        // using strings for keys to avoid insertion of CONVERT instruction 
+        // https://github.com/neo-project/neo-devpack-dotnet/issues/777
+        const string Prefix_SampleValue = "S";
+        const string Prefix_ContractOwner = "O";
 
         [Safe]
         public static ByteString Get()
         {
-            var context = Storage.CurrentContext;
-            var key = new byte[] { Prefix_SampleValue };
-            return Storage.Get(context, key);
+            return Storage.Get(Storage.CurrentContext, Prefix_SampleValue);
         }
 
         public static void Put(ByteString value)
         {
-            var context = Storage.CurrentContext;
-            var key = new byte[] { Prefix_SampleValue };
-            Storage.Put(context, key, value);
+            Storage.Put(Storage.CurrentContext, Prefix_SampleValue, value);
         }
 
         public static void Delete()
         {
-            var context = Storage.CurrentContext;
-            var key = new byte[] { Prefix_SampleValue };
-            Storage.Delete(context, key);
+            Storage.Delete(Storage.CurrentContext, Prefix_SampleValue);
         }
 
         [DisplayName("_deploy")]
@@ -45,14 +41,12 @@ namespace DevHawk.SampleContracts
             if (update) return;
 
             var tx = (Transaction)Runtime.ScriptContainer;
-            var key = new byte[] { Prefix_ContractOwner };
-            Storage.Put(Storage.CurrentContext, key, tx.Sender);
+            Storage.Put(Storage.CurrentContext, Prefix_ContractOwner, tx.Sender);
         }
 
         public static void Update(ByteString nefFile, string manifest)
         {
-            var key = new byte[] { Prefix_ContractOwner };
-            var contractOwner = (UInt160)Storage.Get(Storage.CurrentContext, key);
+            var contractOwner = (UInt160)Storage.Get(Storage.CurrentContext, Prefix_ContractOwner);
             if (!Runtime.CheckWitness(contractOwner))
             {
                 throw new Exception("Only the contract owner can update the contract");
