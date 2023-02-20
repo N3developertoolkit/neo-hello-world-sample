@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <NeoContractName>$(AssemblyName)</NeoContractName>
-    <!-- <NeoExpressBatchFile>..\express.batch</NeoExpressBatchFile> -->
+    <NeoExpressBatchFile>./express.batch</NeoExpressBatchFile>
     <Nullable>enable</Nullable>
     <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
@@ -15,4 +15,10 @@
   <Target Name="RestoreDotNetTools" BeforeTargets="Compile" >
     <Exec Command="dotnet tool restore"/>
   </Target>
+<!-- 
+  <Target Name="UnzipNefDbgNfo" AfterTargets="Build" >
+    <Unzip
+      SourceFiles="$(MSBuildThisFileDirectory)bin\sc\hello-sample.nefdbgnfo"
+      DestinationFolder="$(MSBuildThisFileDirectory)bin\sc"/>
+  </Target> -->
 </Project>

@@ -1,0 +1,60 @@
+{
+  "magic": 992120967,
+  "address-version": 53,
+  "consensus-nodes": [
+    {
+      "tcp-port": 50013,
+      "ws-port": 50014,
+      "rpc-port": 50012,
+      "wallet": {
+        "name": "node1",
+        "accounts": [
+          {
+            "private-key": "d695626cfe65f7732d0540e9b2529dabc2119478d840cb79a304ec71264ddcea",
+            "script-hash": "NWUk4FavK23HYzbQ3xjDY1XezzV38XW1no",
+            "label": null,
+            "is-default": true,
+            "contract": {
+              "script": "0c2102cc87bd7a8e1314a6d40bf65d3142cc51aed98d62ffabea9890770f30fc61882a4156e7b327",
+              "parameters": [
+                "Signature"
+              ]
+            }
+          },
+          {
+            "private-key": "d695626cfe65f7732d0540e9b2529dabc2119478d840cb79a304ec71264ddcea",
+            "script-hash": "NPLXkWQpSSs2p8qk6kMEG78rVuvGHfDrd4",
+            "label": "Consensus MultiSigContract",
+            "is-default": false,
+            "contract": {
+              "script": "110c2102cc87bd7a8e1314a6d40bf65d3142cc51aed98d62ffabea9890770f30fc61882a11419ed0dc3a",
+              "parameters": [
+                "Signature"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "wallets": [
+    {
+      "name": "owen",
+      "accounts": [
+        {
+          "private-key": "7a3ee1bc9ec1ba2c3c38c43f74fa48770577c80d64a36e1ed5c7f41cc2a3fa0a",
+          "script-hash": "NbNEXUP15jx2HJGyfTs3b57gtFdhdSojLu",
+          "label": null,
+          "is-default": true,
+          "contract": {
+            "script": "0c21025c445e48823f529539ffa8e15c9e740751c354ef8b7e3a8f95a9eee86e99ab834156e7b327",
+            "parameters": [
+              "Signature"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "settings": {}
+}

@@ -1,0 +1,3 @@
+transfer 10000 gas genesis owen
+contract deploy ./bin/sc/hello-sample.nef owen
+contract run HelloWorld put 42 -a owen
